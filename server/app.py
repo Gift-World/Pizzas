@@ -44,9 +44,11 @@ def delete_restaurant(id):
 def get_restaurant(id):
     restaurant = db.session.get(Restaurant, id)
     if restaurant:
-        return jsonify(restaurant.to_dict(only=('id', 'address', 'name')))
+        # Include restaurant_pizzas in the response
+        return jsonify(restaurant.to_dict(rules=('restaurant_pizzas',)))  # Include all relationships or specify as needed
     else:
-        return make_response(jsonify(error="Restaurant not found")), 404    
+        return make_response(jsonify(error="Restaurant not found")), 404
+
     
 @app.route('/pizzas', methods=['GET'])
 def get_pizzas():

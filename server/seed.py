@@ -26,6 +26,7 @@ with app.app_context():
     california = Pizza(
         name="Melanie", ingredients="Dough, Sauce, Ricotta, Red peppers, Mustard")
     pizzas = [cheese, pepperoni, california]
+   
 
     print("Creating RestaurantPizza...")
 
