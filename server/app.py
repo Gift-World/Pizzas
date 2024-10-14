@@ -44,7 +44,7 @@ def delete_restaurant(id):
 def get_restaurant(id):
     restaurant = db.session.get(Restaurant, id)
     if restaurant:
-        # Include restaurant_pizzas in the response
+  
         return jsonify(restaurant.to_dict(rules=('restaurant_pizzas',)))  # Include all relationships or specify as needed
     else:
         return make_response(jsonify(error="Restaurant not found")), 404
@@ -89,7 +89,5 @@ def create_restaurant_pizza():
         return jsonify({"errors": ["An unexpected error occurred"]}), 200
 
 if __name__ == "__main__":
-    try:
-        app.run(port=5555, debug=True)
-    except Exception as e:
-        print(f"An error occurred while starting the application: {e}")
+    app.run(port=5555, debug=True)
+   
